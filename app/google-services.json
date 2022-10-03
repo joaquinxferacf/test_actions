@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "369609130996",
+    "project_id": "test-gradle-upload-actions",
+    "storage_bucket": "test-gradle-upload-actions.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369609130996:android:564151c15b4d4d7f852fa1",
+        "android_client_info": {
+          "package_name": "com.example.testuploadgradlefirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "369609130996-dmfqhbgt1atpvtkerl3qnsvc3m9ok35u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4bvY0eqOX-7IAMdlKfAd61KvfbXJXTKM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "369609130996-dmfqhbgt1atpvtkerl3qnsvc3m9ok35u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

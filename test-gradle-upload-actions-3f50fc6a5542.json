@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "test-gradle-upload-actions",
+  "private_key_id": "3f50fc6a5542625043af0c7f0fa095903ec4fe3b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDQLjF7kP1O4epe\nd+SpUxnrQpmidMLfKU3bgmD4mK+/tAXmirY3NPCaYX1+TByUYFdAXgFGxhWkDa1e\nJijY0H0J3YRX+MRE4jE54ky8IwEOB+IwtbnWkCRmHda18HIuxYTJDKj8N/lEaz5d\nt+MJclY6HFvVHqT4W5vsTlFXUO/PqkiGVwp/OzjW/YCql3Wrki7AvJO4quebkYqZ\n9NxNJDr2nKGk9aSQjnndJPZ5EU+JaqHlnXPlbfW4FTzWwS+lsRrgS3vpIoBuwBzJ\nNUPtsBLG2zhLxvumKGrZNY6ddhkVz1T7oXHDoA/UaQPELUOlcpDTliyOllER4Y07\nHmYqOkRhAgMBAAECggEADZUTSxMSG81B4R5PD7xpbVUqjeldSiRj59rxSww3MeQ5\nGv9Y1RrsnxNA60u5n5/2LAUWGJEq70mp0oHd2gt8Ok0MFJXumZSXuUWU/moFkxib\nlCmpxssfvNPcjYFIXy8piIPSxfs8QE+uQXy9C4GSCPePBvAZZk91HwKbFv3OWkzi\nj105nedBY2IO30sd8TAYHKrG8apF8fLQR7LiYAA3kAPfxztji5MIyULiZuP04ABM\nLoXGt5W7f75lW5CtjIiHw+UxjaCpijAeQ5534htj2Hq6Bztlf8O0xNEKj3iUYPyN\nz+gByGO6jnrw02deQMzQm1HwqyicXOJrccPOHV7UOQKBgQDpKs6GDJoPYBBZwZa5\nWA/CZY+bLh35ooC/b9N6J0nYCUpqOHpwVGClvzI4WTmLLiuxvT6WBG6Z/J5xQ9bO\nW4Ful7K6JXM1fpBNbvr/ynx2cIGQZ8pW2fYrEsk7U7R/uIPO1ySQ/+Nmcjc++w3K\nISfpf07mvVVhoVFQs573hs/h9QKBgQDkkQBUwzQ/m9IBR6kAAKUzV8yw6JhtoqVP\nkcIGGj4UFR6UcAN+nhLsvIHgGEwrxtqz1oyDpq0CnXwZBRQA9sz1CCCwHPCm+r6d\ntHMnX/HYRr/Yh0996+flmPPFj9ZX8ObkbB/vst9cPyt5Tp/ekc75lZrxko01zH+7\nb4EdpE6ZPQKBgHD5ZruYm4TbnNCAdhEz097y6pPb0nZEAHHBMww6wRLF3aJ93wVS\nPMnSS/j1cmY3ZsBl209Asn414mcq4Yd22s3E/romrx26RxzdqwwJBik09fIL+AQA\n87+HCK2QLyK7OlIb+AGxmnLm4FHJvrKzQe1m28n87sOxL/8UKO/yCAOJAoGAc8f3\n8PgJCYe3M6rHMxcgmAeLyrmoLTFMqCffrxOwCqBAI1Uyj/sm/wDmkUv9mddbhenS\nuAXAciiwakQmQ+7BGAaL+GpQhWVTFbQI+RMjATmliNvSKqlLiQSXx6X7IAUKEP+s\nldF4T9Q4A3UOisI1pDxihqiEG5KBycLMFuXaYskCgYBnG8Rp8JYDnONozeFYdAMK\nU6SK1s8AJfX0Y3pkxlN5iZqTka5Iw/ULux7n+UwI5bWxjX/kT1QKw4vXV3A3U4VK\njlWrxXpoz7yCivcwvbPJEP8Ic14NZCy4tfQNm9OnwL8f+AW22AANL6EcdvjgxaZn\nclx8B+hYsXZxHiR6oViyvw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-9qgd6@test-gradle-upload-actions.iam.gserviceaccount.com",
+  "client_id": "110215278424426885146",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-9qgd6%40test-gradle-upload-actions.iam.gserviceaccount.com"
+}
