@@ -7,25 +7,20 @@
 
 name: Subir apk a firebase
 
-on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
-permissions:
-  contents: read
+on: [push]
 
 jobs:
-  build:
-
+  android-ci:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
-      - uses: sparkfabrik/android-build-action@v1.0.0
+      
+      - name: "Android CI"
+      - uses: code0987/android-ci-build-action@master
         with:
-          project-path: android
-          output-path: my-app.apk
-          gradle-task: assembleRelease appDistributionUploadRelease 
-   
+          args: |
+            npm install
+            export GRADLE_USER_HOME=`pwd`./src/.gradle
+            chmod 755 ./src/gradlew
+            ./src/gradlew -p ./src check
