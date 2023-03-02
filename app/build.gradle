@@ -1,3 +1,12 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.appdistribution'
+
+}
+
+
 
 Properties props = new Properties()
 props.load(new FileInputStream("$project.rootDir/version.properties"))
@@ -20,14 +29,6 @@ private String getVersionName() {
     }
 
     return "${ext.majorVersion}.${ext.minorVersion}.${ext.patchVersion}"
-}
-
-plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-    id 'com.google.gms.google-services'
-    id 'com.google.firebase.appdistribution'
-
 }
 
 android {
