@@ -13,7 +13,7 @@ jobs:
     - name: Mobile Version Bump
       uses: ults-io/mobile-version-bump-action@v1
       with:
-        android-project-path: ./ 
+        android-project-path: joaquinxferacf/test_actions/ 
         bump-type: minor
     
     - uses: actions/checkout@v3
