@@ -20,8 +20,10 @@ jobs:
           path: './version.properties'
           properties: 'majorVersion'
 
-      - name: Do something with your bumped release version
-        run: echo $(( steps.read_property.outputs.majorVersion+1 )) >> $MAJOR_VERSION
+      - name: bump version
+        env:
+          NUM: ${{ steps.read_property.outputs.majorVersion }}
+        run: echo $(( $NUM+1 )) >> $MAJOR_VERSION
         
       - name: Write value to Properties-file
         uses: christian-draeger/write-properties@1.1.0
