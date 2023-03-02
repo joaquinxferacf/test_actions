@@ -16,7 +16,7 @@ jobs:
       uses: 'MattiaFailla/android-version-autobump-action@main'
       env:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-       GRADLE_PATH: '/app/build.gradle'
+       GRADLE_PATH: 'app/build.gradle'
     
     - name: set up JDK 11
       uses: actions/setup-java@v3
