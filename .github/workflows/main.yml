@@ -30,7 +30,7 @@ jobs:
         echo "version_name=${{steps.android_version.outputs.VERSION_NAME}}" >> $GITHUB_ENV
 
     - name: Build with Gradle
-      run: ./gradlew assembleStaRelease appDistributionUploadStaRelease
+      run: ./gradlew assembleRelease appDistributionUploadRelease
       
     - name: Upload APK
       uses: actions/upload-artifact@v3.1.0
