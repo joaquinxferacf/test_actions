@@ -10,13 +10,13 @@ jobs:
 
     steps:
     
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
     
-    - name: Mobile Version Bump
-      uses: ults-io/mobile-version-bump-action@v1
-      with:
-        android-project-path: ./ 
-        bump-type: minor
+    - name: 'Android autobump version'
+      uses: 'MattiaFailla/android-version-autobump-action@main'
+      env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       GRADLE_PATH: './android/app/build.gradle'
     
     - name: set up JDK 11
       uses: actions/setup-java@v3
