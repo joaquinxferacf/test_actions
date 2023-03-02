@@ -1,0 +1,33 @@
+name: VersionNameMajor Bump 
+
+on: [workflow_dispatch]
+
+env:
+  MAJOR_VERSION: 0
+
+jobs:
+  builder:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Read value from Properties-file
+        id: read_property
+        uses: christian-draeger/read-properties@1.1.1
+        with:
+          path: './version.properties'
+          properties: 'majorVersion'
+
+      - name: Do something with your bumped release version
+        run: echo ${{ steps.read_property.outputs.majorVersion+1 }} >> $MAJOR_VERSION
+        
+      - name: Write value to Properties-file
+        uses: christian-draeger/write-properties@1.1.0
+        with:
+          path: './src/main/resources/application.properties'
+          property: |
+            'majorVersion'
+          value: |
+            '$MAJOR_VERSION'
