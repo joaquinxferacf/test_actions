@@ -24,7 +24,7 @@ jobs:
         env:
           NUM: ${{ steps.read_property.outputs.majorVersion }}
         run: |
-          echo "$(($NUM+1))" >> $MAJOR_VERSION
+          echo "$(($NUM+1))" >> ${{ env.MAJOR_VERSION }}
           echo $MAJOR_VERSION
         
       - name: Write value to Properties-file
