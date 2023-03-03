@@ -1,4 +1,4 @@
-name: VersionNameMajor Bump 
+name: VersionNameMinor Bump 
 
 on: [workflow_dispatch]
 
