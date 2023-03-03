@@ -20,7 +20,7 @@ jobs:
           path: './version.properties'
           properties: majorVersion
 
-      - name: bump version
+      - name: bump major version
         env:
           NUM: ${{ steps.read_property.outputs.majorVersion }}
           SUM: $(($NUM+1))
@@ -29,19 +29,32 @@ jobs:
           echo "MAJOR_VERSION=${{ env.SUM }}" >> $GITHUB_ENV
           echo $MAJOR_VERSION
         
-      - name: Write value to Properties-file
-        uses: christian-draeger/write-properties@1.1.0
+      - name: Write major version
+        uses: christian-draeger/write-properties@1.0.1
         with:
           path: './version.properties'
           property: |
             majorVersion
-            minorVersion
-            patchVersion
           value: |
             ${{ env.MAJOR_VERSION }}
-            0
+            
+      - name: reset minor version
+        uses: christian-draeger/write-properties@1.0.1
+        with:
+          path: './version.properties'
+          property: |
+            minorVersion
+          value: |
             0
             
+      - name: reset patch version
+        uses: christian-draeger/write-properties@1.0.1
+        with:
+          path: './version.properties'
+          property: |
+            patchVersion
+          value: |
+            0
             
       - name: commit properties file
         uses: EndBug/add-and-commit@v9
