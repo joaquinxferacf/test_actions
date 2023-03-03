@@ -24,7 +24,7 @@ jobs:
         env:
           NUM: ${{ steps.read_property.outputs.majorVersion }}
         run: |
-          echo "$(( $NUM+1 ))" >> $MAJOR_VERSION 
+          echo "$(($NUM+1))" >> "$MAJOR_VERSION" 
           echo $MAJOR_VERSION
         
       - name: Write value to Properties-file
@@ -32,7 +32,7 @@ jobs:
         with:
           path: './version.properties'
           property: majorVersion
-          value: "$MAJOR_VERSION"
+          value: ${{ $MAJOR_VERSION }}
             
             
       - name: commit properties file
