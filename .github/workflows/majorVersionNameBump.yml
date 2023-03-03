@@ -30,7 +30,7 @@ jobs:
           echo $MAJOR_VERSION
         
       - name: Write value to Properties-file
-        uses: christian-draeger/write-properties@1.0.1
+        uses: christian-draeger/write-properties@1.1.0
         with:
           path: './version.properties'
           property: |
