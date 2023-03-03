@@ -21,8 +21,10 @@ jobs:
           properties: majorVersion
 
       - name: bump version
+        env:
+          NUM: ${{ steps.read_property.outputs.majorVersion }}
         run: |
-          echo $(( $({steps.read_property.outputs.majorVersion)}+1 )) >> $MAJOR_VERSION
+          echo "$(( $NUM+1 ))" >> $MAJOR_VERSION 
           echo $MAJOR_VERSION
         
       - name: Write value to Properties-file
