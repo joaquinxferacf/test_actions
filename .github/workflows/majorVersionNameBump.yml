@@ -33,28 +33,22 @@ jobs:
         uses: christian-draeger/write-properties@1.0.1
         with:
           path: './version.properties'
-          property: |
-            majorVersion
-          value: |
-            ${{ env.MAJOR_VERSION }}
+          property:  majorVersion
+          value: ${{ env.MAJOR_VERSION }}
             
       - name: reset minor version
         uses: christian-draeger/write-properties@1.0.1
         with:
           path: './version.properties'
-          property: |
-            minorVersion
-          value: |
-            0
+          property: minorVersion
+          value: 0
             
       - name: reset patch version
         uses: christian-draeger/write-properties@1.0.1
         with:
           path: './version.properties'
-          property: |
-            patchVersion
-          value: |
-            0
+          property: patchVersion
+          value: 0
             
       - name: commit properties file
         uses: EndBug/add-and-commit@v9
