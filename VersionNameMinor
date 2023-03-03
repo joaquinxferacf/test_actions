@@ -1,0 +1,50 @@
+name: VersionNameMajor Bump 
+
+on: [workflow_dispatch]
+
+env:
+  MINOR_VERSION: 0
+
+jobs:
+  builder:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Read value from Properties-file
+        id: read_property
+        uses: christian-draeger/read-properties@1.1.1
+        with:
+          path: './version.properties'
+          properties: majorVersion minorVersion patchVersion
+
+      - name: bump major version
+        env:
+          NUM: ${{ steps.read_property.outputs.minorVersion }}
+          SUM: $(($NUM+1))
+        run: |
+          echo "MINOR_VERSION=${{ env.SUM }}"
+          echo "MINOR_VERSION=${{ env.SUM }}" >> $GITHUB_ENV
+          echo $MINOR_VERSION
+        
+      - name: Write minor version
+        uses: christian-draeger/write-properties@1.0.1
+        with:
+          path: './version.properties'
+          property:  minorVersion
+          value: ${{ env.MINOR_VERSION }}
+
+      - name: reset patch version
+        uses: christian-draeger/write-properties@1.0.1
+        with:
+          path: './version.properties'
+          property: patchVersion
+          value: 0
+            
+      - name: commit properties file
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: './version.properties'
+          message: "bump major version to ${{ steps.read_property.outputs.majorVersion }}.${{ env.MINOR_VERSION }}.${{ steps.read_property.outputs.patchVersion }}"
