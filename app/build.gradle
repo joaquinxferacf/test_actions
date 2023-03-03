@@ -63,6 +63,29 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    
+      /* Copy task */
+    android.applicationVariants.all { variant ->
+        if (variant.buildType.name != "debug") {
+            def varName = variant.name.capitalize()
+
+            def copyTask = tasks.create(name: "copyAPK${varName}", type: Copy) {
+
+                def destDir = new File(rootDir.path + File.separator + 'apks')
+                if (destDir.exists()) {
+                    destDir.delete()
+                }
+
+                destDir.mkdirs()
+                from 'build/outputs/apk/' + variant.buildType.name
+                into destDir
+                include '**/*.apk'
+            }
+            variant.getAssembleProvider().get().finalizedBy {
+                copyTask
+            }
+        }
+    }
 }
 
 dependencies {
