@@ -18,7 +18,7 @@ jobs:
         uses: christian-draeger/read-properties@1.1.1
         with:
           path: './version.properties'
-          properties: 'majorVersion'
+          properties: majorVersion
 
       - name: bump version
         env:
@@ -30,13 +30,13 @@ jobs:
         with:
           path: './version.properties'
           property: |
-            'majorVersion'
+            majorVersion
           value: |
-            '$MAJOR_VERSION'
+            $MAJOR_VERSION
             
             
       - name: commit properties file
         uses: EndBug/add-and-commit@v9
         with:
           add: './version.properties'
-          message: 'bump major version to $MAJOR_VERSION'
+          message: 'bump major version to $({MAJOR_VERSION)}'
