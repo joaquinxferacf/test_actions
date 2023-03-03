@@ -18,7 +18,7 @@ jobs:
         uses: christian-draeger/read-properties@1.1.1
         with:
           path: './version.properties'
-          properties: majorVersion
+          properties: majorVersion minorVersion patchVersion
 
       - name: bump major version
         env:
@@ -54,4 +54,4 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           add: './version.properties'
-          message: "bump major version to ${{ env.MAJOR_VERSION }}"
+          message: "bump major version to ${{ env.MAJOR_VERSION }}.${{ steps.read_property.outputs.minorVersion }}.${{ steps.read_property.outputs.patchVersion }}"
