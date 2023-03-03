@@ -47,4 +47,4 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           add: './version.properties'
-          message: "bump major version to $MAJOR_VERSION"
+          message: "bump major version to ${{ env.MAJOR_VERSION }}"
