@@ -29,14 +29,12 @@ jobs:
         uses: christian-draeger/write-properties@1.1.0
         with:
           path: './version.properties'
-          property: |
-            majorVersion
-          value: |
-            $MAJOR_VERSION
+          property: majorVersion
+          value: "$MAJOR_VERSION"
             
             
       - name: commit properties file
         uses: EndBug/add-and-commit@v9
         with:
           add: './version.properties'
-          message: 'bump major version to $({MAJOR_VERSION)}'
+          message: "bump major version to $MAJOR_VERSION"
