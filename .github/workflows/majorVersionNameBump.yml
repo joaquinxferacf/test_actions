@@ -25,7 +25,8 @@ jobs:
           NUM: ${{ steps.read_property.outputs.majorVersion }}
           SUM: $(($NUM+1))
         run: |
-          echo "MAJOR_VERSION=$SUM" >> $GITHUB_ENV
+          echo "MAJOR_VERSION=${{ env.SUM }}"
+          echo "MAJOR_VERSION=${{ env.SUM }}" >> $GITHUB_ENV
           echo $MAJOR_VERSION
         
       - name: Write value to Properties-file
