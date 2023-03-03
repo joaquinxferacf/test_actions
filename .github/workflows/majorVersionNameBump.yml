@@ -33,3 +33,10 @@ jobs:
             'majorVersion'
           value: |
             '$MAJOR_VERSION'
+            
+            
+      - name: commit properties file
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: './version.properties'
+          message: 'bump major version to $MAJOR_VERSION'
