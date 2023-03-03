@@ -33,8 +33,14 @@ jobs:
         uses: christian-draeger/write-properties@1.0.1
         with:
           path: './version.properties'
-          property: majorVersion
-          value: ${{ env.MAJOR_VERSION }}
+          property: |
+            majorVersion
+            minorVersion
+            patchVersion
+          value: |
+            ${{ env.MAJOR_VERSION }}
+            0
+            0
             
             
       - name: commit properties file
