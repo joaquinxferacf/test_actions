@@ -20,7 +20,7 @@ jobs:
           path: './version.properties'
           properties: majorVersion minorVersion patchVersion
 
-      - name: bump major version
+      - name: bump minor version
         env:
           NUM: ${{ steps.read_property.outputs.minorVersion }}
           SUM: $(($NUM+1))
