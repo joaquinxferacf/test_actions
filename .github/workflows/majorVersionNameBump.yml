@@ -32,7 +32,7 @@ jobs:
         with:
           path: './version.properties'
           property: majorVersion
-          value: ${{ MAJOR_VERSION }}
+          value: ${{ env.MAJOR_VERSION }}
             
             
       - name: commit properties file
