@@ -1,6 +1,6 @@
 name: VersionNamePatch Bump 
 
-on: [workflow_dispatch]
+on: [workflow_dispatch, workflow_call]
 
 env:
   PATCH_VERSION: 0
