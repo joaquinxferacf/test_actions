@@ -10,15 +10,15 @@ on:
 jobs:
 
   if_major:
-    if: ${{ github.event.pull_request.merged == true }} && ${{ github.event.label.name == 'major' }}
+    if: github.event.label.name == 'major'
     uses: ./.github/workflows/MajorVersionNameBump.yml
 
   if_menor:
-    if: ${{ github.event.pull_request.merged == true }} && ${{ github.event.label.name == 'menor' }}
+    if: github.event.label.name == 'menor'
     uses: ./.github/workflows/MinorVersionNameBump.yml
 
   if_patch:
-    if: ${{ github.event.pull_request.merged == true }} && ${{ github.event.label.name == 'patch' }}
+    if: github.event.label.name == 'patch'
     uses: ./.github/workflows/PatchVersionNameBump.yml
 
   build:
