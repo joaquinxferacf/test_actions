@@ -1,0 +1,18 @@
+name: VersionCode Bump
+
+on: [workflow_dispatch]
+
+jobs:
+  builder:
+    runs-on: ubuntu-latest
+
+    steps:
+    
+      - name: bump version code
+        env:
+          SUM: $(($VERSION_CODE+1))
+        run: |
+          echo "VERSION_CODE=${{ env.SUM }}"
+          echo "VERSION_CODE=${{ env.SUM }}" >> $GITHUB_ENV
+          echo $VERSION_CODE
+        
