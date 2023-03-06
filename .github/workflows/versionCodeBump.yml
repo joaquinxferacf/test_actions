@@ -10,13 +10,13 @@ jobs:
     
       - name: bump version code
         env:
-          SUM: $(($env.VERSION_CODE+1))
+          SUM: $((${{ env.VERSION_CODE }}+1))
         run: |
           echo "env.VERSION_CODE=${{ env.SUM }}"
           echo "env.VERSION_CODE=${{ env.SUM }}" >> $GITHUB_ENV
           
       - name: echo version code
         run: |
-          echo $env.VERSION_CODE
+          echo ${{ env.VERSION_CODE }}
 
         
