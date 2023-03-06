@@ -20,21 +20,17 @@ private Integer getVersionCode() {
 }
 
 private String getVersionName() {
-    if (ext.buildNumber) {
-        return "${ext.majorVersion}.${ext.minorVersion}.${ext.patchVersion}.${ext.buildNumber}"
-    }
-
     return "${ext.majorVersion}.${ext.minorVersion}.${ext.patchVersion}"
 }
 
 android {
     namespace 'com.example.testuploadgradlefirebase'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.testuploadgradlefirebase"
         minSdk 24
-        targetSdk 32
+        targetSdk 33
         versionCode getVersionCode()
         versionName getVersionName()
 
@@ -46,8 +42,8 @@ android {
                 def project = "AppActions"
                 def SEP = "_"
                 def buildType = variant.buildType.name
-                def version = variant.versionName 
-                def versioncode = variant.versionCode
+                def version = getVersionName()
+                def versioncode = getVersionCode()
                 def newApkName = project + SEP + buildType + SEP + version + SEP + versioncode  + ".apk"
 
                 output.outputFileName = newApkName
