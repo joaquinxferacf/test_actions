@@ -6,7 +6,7 @@ env:
   MAJOR_VERSION: 0
 
 jobs:
-  builder:
+  bump_major_job:
     runs-on: ubuntu-latest
 
     steps:
