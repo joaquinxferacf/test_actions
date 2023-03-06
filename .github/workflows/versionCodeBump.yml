@@ -12,8 +12,8 @@ jobs:
         env:
           SUM: $((${{ vars.VERSION_CODE }}+1))
         run: |
-          echo "vars.VERSION_CODE=${{ env.SUM }}"
-          echo "vars.VERSION_CODE=${{ env.SUM }}" >> $GITHUB_ENV
+          echo "VERSION_CODE=${{ env.SUM }}"
+          echo "VERSION_CODE=${{ env.SUM }}" >> $GITHUB_WORKSPACE
           
       - name: echo version code
         run: |
