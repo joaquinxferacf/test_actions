@@ -16,11 +16,7 @@ props.each { prop ->
 
 
 private Integer getVersionCode() {
-    int major = ext.majorVersion as Integer
-    int minor = ext.minorVersion as Integer
-    int patch = ext.patchVersion as Integer
-
-    return major * 10000 + minor * 100 + patch
+    return 60
 }
 
 private String getVersionName() {
