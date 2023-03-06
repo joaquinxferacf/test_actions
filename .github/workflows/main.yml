@@ -6,7 +6,6 @@ on:
   pull_request:
     types:
       - closed
-      - labeled
 
 jobs:
 
