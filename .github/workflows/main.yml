@@ -20,7 +20,7 @@ jobs:
       uses: ./.github/workflows/MajorVersionNameBump.yml
       
     - name: if minor
-      if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'patch')
+      if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'minor')
       uses: ./.github/workflows/PatchVersionNameBump.yml
       
     - name: if patch
