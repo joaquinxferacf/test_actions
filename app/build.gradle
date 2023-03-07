@@ -6,21 +6,23 @@ plugins {
 
 }
 
-
-
-Properties props = new Properties()
-props.load(new FileInputStream("$project.rootDir/version.properties"))
-props.each { prop ->
-    project.ext.set(prop.key, prop.value)
+def getVersionProps = {
+    def versionPropsFile = file("$project.rootDir/version.properties")
+        Properties versionProps = new Properties()
+        versionProps.load(new FileInputStream(versionPropsFile))
+        return versionProps
 }
 
-
-private Integer getVersionCode() {
-    return 60
+def getVersionCode = {
+    return 60 //TODO
 }
 
-private String getVersionName() {
-    return "${ext.majorVersion}.${ext.minorVersion}.${ext.patchVersion}"
+def getVersionName = {
+    def versionProps = getVersionProps()
+    def major = versionProps['majorVersion']
+    def minor = versionProps['minorVersion']
+    def patch = versionProps['patchVersion']
+    return "${major}.${minor}.${patch}"
 }
 
 android {
@@ -31,6 +33,8 @@ android {
         applicationId "com.example.testuploadgradlefirebase"
         minSdk 24
         targetSdk 33
+        buildConfigField 'int', 'VERSION_CODE', "${getVersionCode()}"
+        buildConfigField 'String', 'VERSION_NAME', "\"${getVersionName()}\""
         versionCode getVersionCode()
         versionName getVersionName()
 
