@@ -6,6 +6,8 @@ plugins {
 
 }
 
+def githubRunNumber = System.getenv('GITHUB_RUN_NUMBER') ?: "1"
+
 def getVersionProps = {
     def versionPropsFile = file("$project.rootDir/version.properties")
         Properties versionProps = new Properties()
@@ -14,7 +16,7 @@ def getVersionProps = {
 }
 
 def getVersionCode = {
-    return 60 //TODO
+    return githubRunNumber.toInteger()
 }
 
 def getVersionName = {
