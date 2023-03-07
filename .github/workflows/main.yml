@@ -29,7 +29,7 @@ jobs:
     steps:
 
     - uses: actions/checkout@v3
-    
+
     - name: Read value from Properties-file
       id: read_property
       uses: christian-draeger/read-properties@1.1.1
@@ -47,15 +47,20 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
+    - name: calculate version code
+      env:
+        NUM: ${{ github.run_number }}
+        SUM: $(($NUM+40))
+      run: |
+        echo "VERSION_NAME=${{ env.SUM }}" >> $GITHUB_ENV
+
     - name: Build with Gradle
       run: ./gradlew assembleRelease appDistributionUploadRelease
 
     - name: Upload APK
       env:
         versionName: ${{ steps.read_property.outputs.majorVersion }}.${{ steps.read_property.outputs.minorVersion }}.${{ steps.read_property.outputs.patchVersion }}
-        NUM: ${{ github.run_number }}
-        versionCode: $(($NUM+40))
       uses: actions/upload-artifact@v3.1.0
       with:
         name: app
-        path: app/build/outputs/apk/release/AppActions_release_${{ env.versionName }}_${{ env.versionCode }}.apk
+        path: app/build/outputs/apk/release/AppActions_release_${{ env.versionName }}_$VERSION_CODE.apk
