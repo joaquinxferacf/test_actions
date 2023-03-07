@@ -62,5 +62,5 @@ jobs:
         versionName: ${{ steps.read_property.outputs.majorVersion }}.${{ steps.read_property.outputs.minorVersion }}.${{ steps.read_property.outputs.patchVersion }}
       uses: actions/upload-artifact@v3.1.0
       with:
-        name: app
+        name: AppActions_release_${{ env.versionName }}_${{ env.VERSION_CODE }}.apk
         path: app/build/outputs/apk/release/AppActions_release_${{ env.versionName }}_${{ env.VERSION_CODE }}.apk
