@@ -49,11 +49,12 @@ jobs:
 
     - name: Build with Gradle
       run: ./gradlew assembleRelease appDistributionUploadRelease
-      
+
     - name: Upload APK
       env:
         versionName: ${{ steps.read_property.outputs.majorVersion }}.${{ steps.read_property.outputs.minorVersion }}.${{ steps.read_property.outputs.patchVersion }}
-        versionCode: $((${{ github.run_number }}+40))
+        NUM: ${{ github.run_number }}
+        versionCode: $(($NUM+40))
       uses: actions/upload-artifact@v3.1.0
       with:
         name: app
