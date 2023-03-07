@@ -52,7 +52,7 @@ jobs:
         NUM: ${{ github.run_number }}
         SUM: $(($NUM+40))
       run: |
-        echo "VERSION_NAME=${{ env.SUM }}" >> $GITHUB_ENV
+        echo "VERSION_CODE=${{ env.SUM }}" >> $GITHUB_ENV
 
     - name: Build with Gradle
       run: ./gradlew assembleRelease appDistributionUploadRelease
