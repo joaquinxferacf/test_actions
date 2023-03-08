@@ -6,17 +6,21 @@ plugins {
 
 }
 
-def githubRunNumber = System.getenv('GITHUB_RUN_NUMBER') ?: "1"
+def githubRunNumber = System.getenv('GITHUB_RUN_NUMBER') ?: ""
 
 def getVersionProps = {
     def versionPropsFile = file("$project.rootDir/version.properties")
-        Properties versionProps = new Properties()
-        versionProps.load(new FileInputStream(versionPropsFile))
-        return versionProps
+    Properties versionProps = new Properties()
+    versionProps.load(new FileInputStream(versionPropsFile))
+    return versionProps
 }
 
 def getVersionCode = {
-    return githubRunNumber.toInteger()+40
+    if (githubRunNumber.isEmpty()) {
+        return 1
+    } else {
+        return githubRunNumber.toInteger() + 40
+    }
 }
 
 def getVersionName = {
@@ -39,33 +43,33 @@ android {
         buildConfigField 'String', 'VERSION_NAME', "\"${getVersionName()}\""
         versionCode getVersionCode()
         versionName getVersionName()
+        setProperty("archivesBaseName", "AppActions_${versionName}_${versionCode}")
+
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        
-          applicationVariants.all { variant ->
-            variant.outputs.each { output ->
 
-                def project = "AppActions"
-                def SEP = "_"
-                def buildType = variant.buildType.name
-                def version = getVersionName()
-                def versioncode = getVersionCode()
-                def newApkName = project + SEP + buildType + SEP + version + SEP + versioncode  + ".apk"
+    }
 
-                output.outputFileName = newApkName
-            }
+    signingConfigs {
+        release {
+            storeFile file("$project.rootDir/keystore.jks")
+            storePassword '12345678'
+            keyAlias 'release'
+            keyPassword '12345678'
         }
     }
+
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             firebaseAppDistribution {
-                releaseNotesFile="changelog.txt"
-                testers="joaquin@money-go.es"
-                serviceCredentialsFile="test-gradle-upload-actions-37db670e4b2e.json"
+                releaseNotesFile = "changelog.txt"
+                testers = "joaquin@money-go.es"
+                serviceCredentialsFile = "test-gradle-upload-actions-37db670e4b2e.json"
             }
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
@@ -75,7 +79,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    
+
 }
 
 dependencies {
