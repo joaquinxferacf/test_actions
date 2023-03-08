@@ -16,11 +16,7 @@ def getVersionProps = {
 }
 
 def getVersionCode = {
-    if (githubRunNumber.isEmpty()) {
-        return 1
-    } else {
-        return githubRunNumber.toInteger() + 40
-    }
+    return  (githubRunNumber.isEmpty()) ? 1 : githubRunNumber.toInteger() + 40
 }
 
 def getVersionName = {
