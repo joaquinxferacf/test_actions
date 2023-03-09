@@ -34,8 +34,7 @@ jobs:
         env:
           ENCODED_STRING: ${{ secrets.KEYSTORE }}
         run: |
-          mkdir "${TMP_KEYSTORE_FILE_PATH}"
-          echo $ENCODED_STRING | base64 -di > "work/_temp/keystore/keystore.jks
+          echo $ENCODED_STRING | base64 -d > "work/_temp/keystore/keystore.jks
 
       - uses: actions/checkout@v3
 
