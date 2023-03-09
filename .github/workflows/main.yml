@@ -34,7 +34,8 @@ jobs:
         env:
           ENCODED_STRING: ${{ secrets.KEYSTORE }}
         run: |
-          echo $ENCODED_STRING | base64 -d > "work/_temp/keystore/keystore.jks
+          echo $ENCODED_STRING | base64 -d > "work/_temp/keystore/keystore.jks" |
+          cat "work/_temp/keystore/keystore.jks"
 
       - uses: actions/checkout@v3
 
