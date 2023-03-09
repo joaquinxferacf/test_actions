@@ -13,17 +13,17 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Write secrets
-          uses: christian-draeger/write-properties@1.1.0
-          with:
-            path: './secrets.properties'
-            property: |
-              'KEYSTORE_FILE'
-              'KEYSTORE_PASSWORD'
-              'SIGNING_KEY_ALIAS'
-              'SIGNING_KEY_PASSWORD'
-            value: |
-              'first value'
-              'second value'
+        uses: christian-draeger/write-properties@1.1.0
+        with:
+          path: './secrets.properties'
+          property: |
+            'KEYSTORE_FILE'
+            'KEYSTORE_PASSWORD'
+            'SIGNING_KEY_ALIAS'
+            'SIGNING_KEY_PASSWORD'
+          value: |
+            'first value'
+            'second value'
 
       - name: Read value from Properties-file
         id: read_property
