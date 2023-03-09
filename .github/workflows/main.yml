@@ -40,19 +40,6 @@ jobs:
         path: './version.properties'
         properties: majorVersion minorVersion patchVersion
 
-    - name: Write minor version
-        uses: christian-draeger/write-properties@1.1.0
-        with:
-          path: './secrets.properties'
-          property: |
-            'KEYSTORE_FILE'
-            'KEYSTORE_PASSWORD'
-            'SIGNING_KEY_ALIAS'
-            'SIGNING_KEY_PASSWORD'
-          value: |
-            'first value'
-            'second value'
-
     - name: set up JDK 11
       uses: actions/setup-java@v3
       with:
