@@ -1,14 +1,7 @@
-name: Desplegar Release en Firebase
+name: Test secrets
 
 on:
   workflow_dispatch:
-
-  pull_request:
-    branches:
-      - release/*
-
-    types:
-      - closed
 
 jobs:
 
