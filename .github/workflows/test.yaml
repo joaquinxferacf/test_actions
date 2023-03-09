@@ -22,8 +22,10 @@ jobs:
             'SIGNING_KEY_ALIAS'
             'SIGNING_KEY_PASSWORD'
           value: |
-            'first value'
-            'second value'
+            '${{ secrets.KEYSTORE_FILE }}'
+            '${{ secrets.KEYSTORE_PASSWORD }}'
+            '${{ secrets.SIGNING_KEY_ALIAS }}'
+            '${{ secrets.SIGNING_KEY_PASSWORD }}'
 
       - name: Read value from Properties-file
         id: read_property
