@@ -30,15 +30,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Decode Keystore
-        env:
-          ENCODED_STRING: ${{ secrets.KEYSTORE }}
-        run: |
-          mkdir -p "work/_temp/keystore"
-          echo $ENCODED_STRING | base64 -d > "work/_temp/keystore/keystore.jks"
-          cat "work/_temp/keystore/keystore.jks"
 
       - uses: actions/checkout@v3
+
+      - name: Decode Keystore
+          env:
+            ENCODED_STRING: ${{ secrets.KEYSTORE }}
+          run: |
+            mkdir -p "./keystore"
+            echo $ENCODED_STRING | base64 -d > "./keystore/keystore.jks"
+            cat "./keystore/keystore.jks"
 
       - name: Read value from Properties-file
         id: read_property
