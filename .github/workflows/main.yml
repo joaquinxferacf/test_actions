@@ -34,6 +34,7 @@ jobs:
         env:
           ENCODED_STRING: ${{ secrets.KEYSTORE }}
         run: |
+          mkdir -p "work/_temp/keystore"
           echo $ENCODED_STRING | base64 -d > "work/_temp/keystore/keystore.jks"
           cat "work/_temp/keystore/keystore.jks"
 
