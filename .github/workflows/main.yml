@@ -6,6 +6,7 @@ on:
       aab:
         type: boolean
         description: aab para playstore
+        default: false
 
   pull_request:
     branches:
