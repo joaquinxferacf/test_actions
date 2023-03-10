@@ -2,6 +2,9 @@ name: Desplegar Release en Firebase
 
 on:
   workflow_dispatch:
+    inputs:
+      aab:
+        type: boolean
   
   pull_request:
     branches:
