@@ -70,6 +70,8 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             firebaseAppDistribution {
+                appId "com.example.testuploadgradlefirebase"
+                artifactType "AAB"
                 releaseNotesFile = "changelog.txt"
                 testers = "joaquin@money-go.es"
                 serviceCredentialsFile = "test-gradle-upload-actions-37db670e4b2e.json"
