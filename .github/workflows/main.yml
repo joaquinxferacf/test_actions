@@ -69,12 +69,21 @@ jobs:
         run: |
           echo "VERSION_CODE=${{ env.SUM }}" >> $GITHUB_ENV
 
-      - name: Build with Gradle
+      - name: Build with Gradle apk
+        if: ${{ !inputs.aab }}
         env:
           SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
           SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
           SIGNING_STORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-        run: ./gradlew bundleRelease appDistributionUploadRelease
+        run: ./gradlew assembleRelease appDistributionUploadRelease
+
+      - name: Build with Gradle aab
+        if: ${{ inputs.aab }}
+        env:
+          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+          SIGNING_STORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        run: ./gradlew bundleRelase
 
       - name: Upload APK
         uses: actions/upload-artifact@v3.1.0
