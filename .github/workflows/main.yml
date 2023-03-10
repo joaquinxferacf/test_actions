@@ -5,7 +5,8 @@ on:
     inputs:
       aab:
         type: boolean
-  
+        description: aab para playstore
+
   pull_request:
     branches:
       - release/*
