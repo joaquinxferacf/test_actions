@@ -34,6 +34,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    
+      - name: if aab
+        shell: bash
+        run: |
+          if [ "${{ inputs.aab }}" == "" ]; then
+            echo "AAB=true" >> $GITHUB_OUTPUT
+          else
+            echo "AAB=${{ inputs.aab }}" >> $GITHUB_OUTPUT
+          fi
+        
 
       - uses: actions/checkout@v3
 
