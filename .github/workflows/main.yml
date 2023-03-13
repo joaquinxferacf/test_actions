@@ -8,12 +8,12 @@ on:
         description: aab para playstore
         default: false
 
-    pull_request:
-      branches:
-        - release/*
+  pull_request:
+    branches:
+      - release/*
 
-      types:
-        - closed
+    types:
+      - closed
 
 jobs:
 
