@@ -2,11 +2,9 @@ name: Desplegar Release en Firebase
 
 on:
   pull_request:
-    types:
-      - closed
+    types: [ closed ]
     branches:
       - 'main'
-      
   workflow_dispatch:
     inputs:
       aab:
@@ -80,7 +78,7 @@ jobs:
           echo "VERSION_CODE=${{ env.SUM }}" >> $GITHUB_ENV
 
       - name: Build with Gradle apk
-        if: ${{ !inputs.aab }}
+        if: ${{ !env.AAB }}
         env:
           SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
           SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
@@ -88,7 +86,7 @@ jobs:
         run: ./gradlew assembleRelease appDistributionUploadRelease
 
       - name: Build with Gradle aab
-        if: ${{ inputs.aab }}
+        if: ${{ env.AAB }}
         env:
           SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
           SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
