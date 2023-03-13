@@ -1,10 +1,9 @@
 name: Desplegar Release en Firebase
 
 on:
-  pull_request:
-    types: [ closed ]
+  push:
     branches:
-      - 'main'
+      - master
   workflow_dispatch:
     inputs:
       aab:
