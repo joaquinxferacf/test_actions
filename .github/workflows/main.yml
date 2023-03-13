@@ -1,18 +1,18 @@
 name: Desplegar Release en Firebase
 
 on:
-  workflow_dispatch:
-    inputs:
-      aab:
-        type: boolean
-        description: aab para playstore
-        default: false
-
   pull_request:
-    branches:
-      - 'release/**'
     types:
       - closed
+    branches:
+      - 'releases/**'
+      
+  #  workflow_dispatch:
+  #   inputs:
+  #     aab:
+  #       type: boolean
+  #       description: aab para playstore
+  #       default: false
 
 jobs:
 
