@@ -2,17 +2,7 @@ name: Desplegar Release en Firebase
 
 on:
   pull_request:
-    types:
-      - closed
-    branches:
-      - 'main'
-      
-  workflow_dispatch:
-    inputs:
-      aab:
-        type: boolean
-        description: aab para playstore
-        default: false
+    types: [ closed ]
 
 jobs:
 
