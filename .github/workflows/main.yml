@@ -2,17 +2,17 @@ name: Desplegar Release en Firebase
 
 on:
   pull_request:
-#    types:
-#      - closed
+    types:
+      - closed
     branches:
-      - 'releases/**'
+      - 'release/**'
       
-#  workflow_dispatch:
-#    inputs:
-#      aab:
-#        type: boolean
-#        description: aab para playstore
-#        default: false
+  workflow_dispatch:
+    inputs:
+      aab:
+        type: boolean
+        description: aab para playstore
+        default: false
 
 jobs:
 
