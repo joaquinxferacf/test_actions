@@ -27,7 +27,7 @@ jobs:
     uses: ./.github/workflows/PatchVersionNameBump.yml
 
   build:
-    if: ${{ always() }}
+    if: ${{ always() }} && github.event.pull_request.merged == true
     needs: [ if_major, if_menor, if_patch ]
     runs-on: ubuntu-latest
 
