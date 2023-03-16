@@ -83,12 +83,12 @@ jobs:
         uses: hasretsariyer/firebase-app-distribution-github-action@v1.0.0
         with:
           # Firebase App ID. You can find it in the Firebase console, on the General Settings page.
-          app_id: "1:369609130996:android:564151c15b4d4d7f852fa1"
+          app_id: "\"1:369609130996:android:564151c15b4d4d7f852fa1\""
           # Path of IPA or APK file to distribution.
           app_file: app/build/outputs/apk/release/AppActions_release_${{ env.versionName }}_${{ env.VERSION_CODE }}.apk
           # 'Firebase access token. You can create it by `firebase login:ci` on your local machine.
           # Visit [cli-ci-systems](https://firebase.google.com/docs/cli#cli-ci-systems) for more detail'
-          firebase_token: "1//03XmL97L60uS1CgYIARAAGAMSNwF-L9IrXjGOk_TxI8sT7HoSFSsMi1sFQIz1zpLY1p8erBJiySnBqO20yG_Y-4HO1BJz86eKmjM"
+          firebase_token: "\"1//03XmL97L60uS1CgYIARAAGAMSNwF-L9IrXjGOk_TxI8sT7HoSFSsMi1sFQIz1zpLY1p8erBJiySnBqO20yG_Y-4HO1BJz86eKmjM\""
         # Distribution groups
         #  tester_groups: # optional
         # Release notes for this build.
