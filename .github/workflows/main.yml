@@ -85,7 +85,7 @@ jobs:
           versionName: ${{ steps.read_property.outputs.majorVersion }}.${{ steps.read_property.outputs.minorVersion }}.${{ steps.read_property.outputs.patchVersion }}
         with:
           appId: 1:369609130996:android:564151c15b4d4d7f852fa1
-          file: app/build/outputs/apk/release/AppActions_release_${{ env.versionName }}_${{ env.VERSION_CODE }}.apk
+          file: app/build/outputs/apk/release/AppActions_${{ env.versionName }}_${{ env.VERSION_CODE }}-release.apk
           token: 1//03XmL97L60uS1CgYIARAAGAMSNwF-L9IrXjGOk_TxI8sT7HoSFSsMi1sFQIz1zpLY1p8erBJiySnBqO20yG_Y-4HO1BJz86eKmjM
           
       - name: Build with Gradle aab
