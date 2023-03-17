@@ -81,6 +81,8 @@ jobs:
       - name: upload firebase apk
         if: ${{ !env.AAB }}
         uses: wzieba/Firebase-Distribution-Github-Action@v1.5.0
+        env:
+          versionName: ${{ steps.read_property.outputs.majorVersion }}.${{ steps.read_property.outputs.minorVersion }}.${{ steps.read_property.outputs.patchVersion }}
         with:
           appId: 1:369609130996:android:564151c15b4d4d7f852fa1
           file: app/build/outputs/apk/release/AppActions_release_${{ env.versionName }}_${{ env.VERSION_CODE }}.apk
