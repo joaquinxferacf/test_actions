@@ -2,9 +2,9 @@ name: Desplegar Release en Firebase
 
 on:
   pull_request:
-    types: [ closed ]
-    branches:
-      - 'main'
+    branches: 
+      - master
+    types: [closed]
   workflow_dispatch:
     inputs:
       aab:
@@ -27,7 +27,7 @@ jobs:
     uses: ./.github/workflows/PatchVersionNameBump.yml
 
   build:
-    if: ${{ always() }}
+    if: ${{ always() }} && github.event.pull_request.merged == true
     needs: [ if_major, if_menor, if_patch ]
     runs-on: ubuntu-latest
 
@@ -41,9 +41,10 @@ jobs:
           else
             echo "AAB=${{ inputs.aab }}" >> $GITHUB_OUTPUT
           fi
-        
 
       - uses: actions/checkout@v3
+        with:
+          ref: master
 
       - name: Decode Keystore
         env:
@@ -51,7 +52,6 @@ jobs:
         run: |
           mkdir -p "./keystore"
           echo $ENCODED_STRING | base64 -d > "./keystore/keystore.jks"
-          cat "./keystore/keystore.jks"
 
       - name: Read value from Properties-file
         id: read_property
@@ -59,13 +59,6 @@ jobs:
         with:
           path: './version.properties'
           properties: majorVersion minorVersion patchVersion
-
-      #      - name: set up JDK 11
-      #        uses: actions/setup-java@v3
-      #        with:
-      #          java-version: '11'
-      #          distribution: 'temurin'
-      #          cache: gradle
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
@@ -83,8 +76,18 @@ jobs:
           SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
           SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
           SIGNING_STORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-        run: ./gradlew assembleRelease appDistributionUploadRelease
-
+        run: ./gradlew assembleRelease
+        
+      - name: upload firebase apk
+        if: ${{ !env.AAB }}
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.5.0
+        env:
+          versionName: ${{ steps.read_property.outputs.majorVersion }}.${{ steps.read_property.outputs.minorVersion }}.${{ steps.read_property.outputs.patchVersion }}
+        with:
+          appId: 1:369609130996:android:564151c15b4d4d7f852fa1
+          file: app/build/outputs/apk/release/AppActions_${{ env.versionName }}_${{ env.VERSION_CODE }}-release.apk
+          token: 1//03XmL97L60uS1CgYIARAAGAMSNwF-L9IrXjGOk_TxI8sT7HoSFSsMi1sFQIz1zpLY1p8erBJiySnBqO20yG_Y-4HO1BJz86eKmjM
+          
       - name: Build with Gradle aab
         if: ${{ env.AAB }}
         env:
