@@ -42,7 +42,7 @@ jobs:
             echo "AAB=${{ inputs.aab }}" >> $GITHUB_OUTPUT
           fi
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: master
 
@@ -77,7 +77,7 @@ jobs:
           SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
           SIGNING_STORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
         run: ./gradlew assembleRelease
-          
+
       - name: Build with Gradle aab
         if: ${{ env.AAB }}
         env:
@@ -87,7 +87,7 @@ jobs:
         run: ./gradlew bundleRelease
 
       - name: Upload APK
-        uses: actions/upload-artifact@v3.1.0
+        uses: actions/upload-artifact@v4
         env:
           versionName: ${{ steps.read_property.outputs.majorVersion }}.${{ steps.read_property.outputs.minorVersion }}.${{ steps.read_property.outputs.patchVersion }}
         with:
